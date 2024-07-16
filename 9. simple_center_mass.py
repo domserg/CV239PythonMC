@@ -12,8 +12,8 @@ while (key != 27):
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(hsv, hsv_min, hsv_max)
         cv2.imshow("Mask", mask)
-        m = cv2.moments(bin)
-        mc = m['m10'] // (m['m00'] + 1), m['m01'] // (m['m00'] + 1)
+        m = cv2.moments(mask)
+        mc = int(m['m10'] / (m['m00'] + 1)), int(m['m01'] / (m['m00'] + 1))
         cv2.circle(frame, mc, 20, (255, 0, 0), 2)
         cv2.imshow("Frame with mc", frame)
     # When everything done, release the video capture object
